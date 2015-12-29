@@ -1,10 +1,18 @@
 ## YAML Template.
+spring:
+  profiles:
+    active: docker
+---
+spring:
+  profiles: docker
 server:
-  port: ${PORT:8081}
-  
+  port: 8081
 eureka:
   client:
-    registerWithEureka: true
-    fetchRegistry: true
-    server:
-      waitTimeInMsWhenSyncEmpty: 0
+    serviceUrl:
+      defaultZone: http://eureka:8761/eureka/
+  instance:
+    preferIpAddress: true
+ribbon:
+  eureka:
+    enabled: true

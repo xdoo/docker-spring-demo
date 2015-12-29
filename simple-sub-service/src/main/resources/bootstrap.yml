@@ -7,4 +7,4 @@ eureka:
       
 spring:
   application:
-    name: simple-sub-service
+    name: simplesubservice

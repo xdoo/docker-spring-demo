@@ -7,4 +7,4 @@ eureka:
       
 spring:
   application:
-    name: simple-service
+    name: simpleservice

@@ -4,7 +4,7 @@
     <parent>
         <groupId>de.muenchen</groupId>
         <artifactId>parent</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.2</version>
     </parent>
     <artifactId>simple-sub-service-api</artifactId>
     <packaging>jar</packaging>

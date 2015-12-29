@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-increment version</actionName>
+            <displayName>increment version</displayName>
+            <goals>
+                <goal>build-helper:parse-version</goal>
+                <goal>versions:set</goal>
+                <goal>-DnewVersion=${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.nextIncrementalVersion}</goal>
+                <goal>versions:commit</goal>
+                
+            </goals>
+        </action>
+    </actions>

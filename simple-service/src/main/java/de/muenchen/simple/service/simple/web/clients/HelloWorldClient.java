@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  * @author claus
  */
-@FeignClient("simple-sub-service")
+@FeignClient("simplesubservice")
 public interface HelloWorldClient {
     
     @RequestMapping(method = RequestMethod.GET, value = "/greet")
