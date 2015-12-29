@@ -10,7 +10,8 @@
         <module>simple-sub-service</module>
         <module>simple-service</module>
         <module>eureka</module>
-    </modules>
+    <module>config-service</module>
+  </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
