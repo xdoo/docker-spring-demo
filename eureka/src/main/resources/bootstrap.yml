@@ -1,0 +1,15 @@
+## YAML Template.
+spring:
+  profiles:
+    active: docker
+---
+spring:
+  profiles: cloud
+  application:
+    name: eureka
+---
+spring:
+  profiles: docker
+  application:
+    name: eureka
+

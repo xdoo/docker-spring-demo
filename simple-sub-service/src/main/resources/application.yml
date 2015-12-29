@@ -1,0 +1,10 @@
+## YAML Template.
+server:
+  port: ${PORT:8081}
+  
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    server:
+      waitTimeInMsWhenSyncEmpty: 0
