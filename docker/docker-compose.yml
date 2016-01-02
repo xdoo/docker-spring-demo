@@ -7,6 +7,16 @@ eureka:
         - "8761:8761"
     environment:
         - SPRING_PROFILES_ACTIVE=docker
+        
+config:
+    hostname: configserver
+    build: ../config-service/target
+    links:
+       - discovery
+    ports:
+        - "8888:8888"
+    environment:
+        - SPRING_PROFILES_ACTIVE=docker
   
 simpleservice:
     hostname: simpleservice

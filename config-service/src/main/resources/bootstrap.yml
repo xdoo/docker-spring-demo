@@ -1,0 +1,31 @@
+## YAML Template.
+spring:
+  profiles:
+    active: docker
+---
+spring:
+  profiles: docker
+  application:
+    name: configserver
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/xdoo/docker-spring-demo-config
+encrypt:
+  failOnError: false
+eureka:
+  instance:
+    statusPageUrlPath: ${management.context-path}/info
+    healthCheckUrlPath: ${management.context-path}/health
+    hostname: discovery
+    preferIpAddress: true
+    defaultZone: http://eureka:8761/eureka/
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka:8761/eureka/
+info:
+  description: Config Server
+  url: https://github.com/xdoo/docker-spring-demo-config
