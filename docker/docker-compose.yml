@@ -12,9 +12,7 @@ config:
     hostname: configserver
     build: ../config-service/target
     links:
-       - discovery
-    ports:
-        - "8888:8888"
+       - eureka
     environment:
         - SPRING_PROFILES_ACTIVE=docker
   
