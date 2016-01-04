@@ -15,6 +15,17 @@ config:
        - eureka
     environment:
         - SPRING_PROFILES_ACTIVE=docker
+        
+sidecar:
+    hostname: sidecar
+    build: ../sidecar-service/target
+    ports:
+        - "10000:10000"
+    links:
+        - eureka
+        - simpleservice
+    environment:
+        - SPRING_PROFILES_ACTIVE=docker
   
 simpleservice:
     hostname: simpleservice

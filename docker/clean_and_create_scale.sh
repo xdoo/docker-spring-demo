@@ -6,6 +6,7 @@ docker rmi docker_simplesubservice
 docker rmi docker_simpleservice
 docker rmi docker_eureka
 docker rmi docker_config
+docker rmi docker_sidecar
 
 # docker-compose rm -f
 

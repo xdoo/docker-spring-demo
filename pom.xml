@@ -11,7 +11,8 @@
         <module>simple-service</module>
         <module>eureka</module>
     <module>config-service</module>
-  </modules>
+        <module>sidecar-service</module>
+    </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>

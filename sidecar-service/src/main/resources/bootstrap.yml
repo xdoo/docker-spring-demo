@@ -1,0 +1,15 @@
+## YAML Template.
+spring:
+  profiles:
+    active: docker
+
+---
+spring:
+  profiles: docker
+  application:
+    name: gateway
+  cloud:
+    config:
+      uri: http://configserver:8888
+encrypt:
+  failOnError: false
