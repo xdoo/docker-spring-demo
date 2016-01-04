@@ -28,7 +28,7 @@
       <hashTree>
         <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">true</boolProp>
-          <stringProp name="LoopController.loops">5000</stringProp>
+          <stringProp name="LoopController.loops">500</stringProp>
         </LoopController>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
@@ -36,12 +36,12 @@
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
             <stringProp name="HTTPSampler.domain">127.0.0.1</stringProp>
-            <stringProp name="HTTPSampler.port">8080</stringProp>
+            <stringProp name="HTTPSampler.port">10000</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/greet</stringProp>
+            <stringProp name="HTTPSampler.path">/simpleservice/greet</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>

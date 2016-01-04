@@ -1,2 +1,6 @@
 /config-service/target/
 /sidecar-service/target/
+/simple-sub-service-api/target/
+/simple-sub-service/target/
+/eureka/target/
+/simple-service/target/
