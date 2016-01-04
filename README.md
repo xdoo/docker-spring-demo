@@ -10,4 +10,8 @@ then switch to docker folder
 
 finally start docker fleet
 
-<pre> sh clean_an_create.sh</pre>
+<pre> sh clean_and_create.sh</pre>
+
+or with some scaling
+
+<pre> sh clean_and_create_scale.sh</pre>
