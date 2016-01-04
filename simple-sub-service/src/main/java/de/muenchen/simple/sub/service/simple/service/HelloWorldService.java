@@ -16,13 +16,15 @@
 
 package de.muenchen.simple.sub.service.simple.service;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import org.springframework.stereotype.Service;
 
 @Service
 public class HelloWorldService {
 
-	public String getHelloMessage(String name) {
-		return "Hello " + name;
+	public String getHelloMessage(String name) throws UnknownHostException {
+		return "Hello " + name + " from " + InetAddress.getLocalHost().getHostAddress();
 	}
 
 }

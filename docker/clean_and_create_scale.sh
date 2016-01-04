@@ -14,5 +14,5 @@ docker-compose up -d
 #docker-compose up --force-recreate -d 
 
 # scale
-docker-compose scale simpleservice=3
+# docker-compose scale simpleservice=3
 docker-compose scale simplesubservice=3

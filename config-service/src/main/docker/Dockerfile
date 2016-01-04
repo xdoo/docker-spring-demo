@@ -1,6 +1,6 @@
 FROM ${docker.baseimage}
 
-
+# environment
 ${docker.httpproxy}
 ${docker.httpsproxy}
 VOLUME /tmp/gaia.generate

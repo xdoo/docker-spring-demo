@@ -7,6 +7,7 @@ package de.muenchen.simple.sub.service.simple.web;
 
 import de.muenchen.simple.sub.service.api.Greeter;
 import de.muenchen.simple.sub.service.simple.service.HelloWorldService;
+import java.net.UnknownHostException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +30,7 @@ public class HelloWorldController {
     }
 
     @RequestMapping("/greet")
-    public String greet(@RequestParam(value="name", defaultValue="World") String name) {
+    public String greet(@RequestParam(value="name", defaultValue="World") String name) throws UnknownHostException {
         return this.service.getHelloMessage(name);
     }
     
