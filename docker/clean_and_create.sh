@@ -7,5 +7,7 @@ docker rmi docker_simpleservice
 docker rmi docker_eureka
 docker rmi docker_config
 
+docker-compose rm -f
+
 # build images and start
 docker-compose up -d
