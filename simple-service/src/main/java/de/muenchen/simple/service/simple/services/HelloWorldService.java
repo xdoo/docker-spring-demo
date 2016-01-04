@@ -18,8 +18,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Service
 public class HelloWorldService {
    
-    private HelloWorldClient client;
-    private String ip;
+    private final HelloWorldClient client;
+    private final String ip;
 
     @Autowired
     public HelloWorldService(HelloWorldClient client) throws UnknownHostException {

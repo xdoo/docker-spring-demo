@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package de.muenchen.simple.sub.service.simple.service;
 
 import java.net.InetAddress;
@@ -22,9 +21,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class HelloWorldService {
+    
+    private final String ip;
 
-	public String getHelloMessage(String name) throws UnknownHostException {
-		return "Hello " + name + " from " + InetAddress.getLocalHost().getHostAddress();
-	}
+    public HelloWorldService() throws UnknownHostException {
+        this.ip = InetAddress.getLocalHost().getHostAddress();
+    }
+
+    public String getHelloMessage(String name) throws UnknownHostException {
+        return "Hello " + name + " from " + this.ip;
+    }
 
 }
