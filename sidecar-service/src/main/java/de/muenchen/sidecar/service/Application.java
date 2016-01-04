@@ -1,4 +1,4 @@
-package de.muenchen.sidecar.service.simple;
+package de.muenchen.sidecar.service;
 
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
