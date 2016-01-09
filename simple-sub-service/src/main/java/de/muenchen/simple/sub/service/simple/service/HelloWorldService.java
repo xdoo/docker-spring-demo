@@ -17,19 +17,26 @@ package de.muenchen.simple.sub.service.simple.service;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class HelloWorldService {
     
     private final String ip;
+    
+    @Value("${my.property}")
+    private String myproperty;
+    
+    @Value("${my.default}")
+    private String mydefault;
 
     public HelloWorldService() throws UnknownHostException {
         this.ip = InetAddress.getLocalHost().getHostAddress();
     }
 
     public String getHelloMessage(String name) throws UnknownHostException {
-        return "Hello " + name + " from " + this.ip;
+        return "Hello " + name + " from " + this.ip + String.format(" profile prop > '%s', default prop > '%s'", this.myproperty, this.mydefault);
     }
 
 }
