@@ -3,6 +3,9 @@ spring:
   profiles.active: local
   application:
     name: simplesubservice
+eureka:
+  instance:
+    preferIpAddress: true
 ---
 spring:
   profiles: docker

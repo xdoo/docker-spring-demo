@@ -2,12 +2,6 @@
 spring:
   profiles:
     active: local
-#eureka:
-#  instance:
-#    preferIpAddress: true
-#ribbon:
-#  eureka:
-#    enabled: true
 ---
 spring:
   profiles: docker
