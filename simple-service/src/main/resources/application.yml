@@ -1,18 +1,10 @@
 ## YAML Template.
 spring:
   profiles:
-    active: docker
+    active: local
 ---
 spring:
   profiles: docker
-server:
-  port: 8080
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://eureka:8761/eureka/
-  instance:
-    preferIpAddress: true
-ribbon:
-  eureka:
-    enabled: true
+---
+spring:
+  profiles: local
