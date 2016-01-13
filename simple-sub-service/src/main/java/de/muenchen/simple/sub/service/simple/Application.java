@@ -18,11 +18,13 @@ package de.muenchen.simple.sub.service.simple;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 
 @SpringBootApplication
 @EnableEurekaClient
+@SpringApplicationConfiguration(name="simplesubservice")
 public class Application {
 
 

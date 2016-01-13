@@ -1,8 +1,6 @@
 ## YAML Template.
 spring:
   profiles.active: local
-  application:
-    name: simplesubservice
 eureka:
   instance:
     preferIpAddress: true

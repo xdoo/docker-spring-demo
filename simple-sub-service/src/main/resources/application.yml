@@ -5,13 +5,10 @@ spring:
 ---
 spring:
   profiles: docker
-my:
-    property: foo_docker
+my.property: foo_docker
 ---
 spring:
   profiles: local
-my:
-    property: foo_docker
+my.property: foo_docker
 ---
-my:
-    default: default
+my.default: default
