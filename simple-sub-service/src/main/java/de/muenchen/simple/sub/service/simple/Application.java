@@ -24,7 +24,6 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
 @EnableEurekaClient
-@SpringApplicationConfiguration(name="simplesubservice")
 public class Application {
 
 
