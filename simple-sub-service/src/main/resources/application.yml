@@ -2,30 +2,20 @@
 spring:
   profiles:
     active: local
-server:
-  port: 8080
-eureka:
-  instance:
-    preferIpAddress: true
-ribbon:
-  eureka:
-    enabled: true
+#eureka:
+#  instance:
+#    preferIpAddress: true
+#ribbon:
+#  eureka:
+#    enabled: true
 ---
 spring:
   profiles: docker
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://eureka:8761/eureka/
 my:
     property: foo_docker
 ---
 spring:
   profiles: local
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://127.0.0.1:8761/eureka/
 my:
     property: foo_docker
 ---
