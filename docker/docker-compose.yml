@@ -10,7 +10,7 @@ eureka:
         - DISCOVERY_HOSTNAME=eureka
         - DISCOVERY_PEER_HOSTNAME=eureka_peer
         
-eureka:
+eureka_peer:
     hostname: eureka_peer
     build: ../eureka/target
     environment:
