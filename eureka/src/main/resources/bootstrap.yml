@@ -1,7 +1,7 @@
 ## YAML Template.
 spring:
   profiles:
-    active: docker
+    active: local
   application:
     name: eureka
 server:
@@ -32,7 +32,7 @@ eureka:
 ---
 spring:
   profiles: docker
-server.port: 8761
+server.port: ${DISCOVERY_PORT}
 # spring boot actuator endpoints
 endpoints:
   restart.enabled: true
@@ -44,5 +44,5 @@ eureka:
     preferIpAddress: true
   client:
     registerWithEureka: true
-    serviceUrl.defaultZone: http://${DISCOVERY_PEER_HOSTNAME}/eureka/
+    serviceUrl.defaultZone: http://${DISCOVERY_PEER_HOSTNAME}:${DISCOVERY_PEER_PORT}/eureka/
 

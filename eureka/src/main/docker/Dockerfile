@@ -4,7 +4,7 @@ FROM ${docker.baseimage}
 ${docker.httpproxy}
 ${docker.httpsproxy}
 VOLUME /tmp/gaia.generate
-EXPOSE 8761
+#EXPOSE 8761
 
 # executable
 ADD ${project.artifactId}-${project.version}.jar app.jar
