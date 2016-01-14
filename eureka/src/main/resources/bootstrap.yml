@@ -2,14 +2,47 @@
 spring:
   profiles:
     active: docker
----
-spring:
-  profiles: cloud
   application:
     name: eureka
+server:
+  port: 8761
+  
+---
+spring:
+  profiles: local
+  cloud:
+    config:
+      discovery:
+        enabled: true
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+eureka:
+  instance:
+    hostname: discovery
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
 ---
 spring:
   profiles: docker
-  application:
-    name: eureka
+server.port: 8761
+# spring boot actuator endpoints
+endpoints:
+  restart.enabled: true
+  shutdown.enabled: true
+  health.sensitive: true
+eureka:
+  instance:
+    hostname: ${DISCOVERY_HOSTNAME}
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    serviceUrl.defaultZone: http://${DISCOVERY_PEER_HOSTNAME}/eureka/
 

@@ -7,7 +7,17 @@ eureka:
         - "8761:8761"
     environment:
         - SPRING_PROFILES_ACTIVE=docker
+        - DISCOVERY_HOSTNAME=eureka
+        - DISCOVERY_PEER_HOSTNAME=eureka_peer
         
+eureka:
+    hostname: eureka_peer
+    build: ../eureka/target
+    environment:
+        - SPRING_PROFILES_ACTIVE=docker
+        - DISCOVERY_HOSTNAME=eureka_peer
+        - DISCOVERY_PEER_HOSTNAME=eureka
+
 config:
     hostname: configserver
     build: ../config-service/target
@@ -30,8 +40,6 @@ sidecar:
 simpleservice:
     hostname: simpleservice
     build: ../simple-service/target
-#    ports: 
-#        - "8080:8080"
     environment:
         - SPRING_PROFILES_ACTIVE=docker
     links: 
