@@ -8,15 +8,21 @@ eureka:
     environment:
         - SPRING_PROFILES_ACTIVE=docker
         - DISCOVERY_HOSTNAME=eureka
+        - DISCOVERY_PORT=8761
         - DISCOVERY_PEER_HOSTNAME=eureka_peer
+        - DISCOVERY_PEER_PORT=8762
         
 eureka_peer:
     hostname: eureka_peer
     build: ../eureka/target
+    ports: 
+        - "8762:8762"
     environment:
         - SPRING_PROFILES_ACTIVE=docker
         - DISCOVERY_HOSTNAME=eureka_peer
+        - DISCOVERY_PORT=8762
         - DISCOVERY_PEER_HOSTNAME=eureka
+        - DISCOVERY_PEER_PORT=8761
 
 config:
     hostname: configserver
