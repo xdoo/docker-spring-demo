@@ -31,7 +31,7 @@ public class HelloWorldController {
 
     @RequestMapping("/greet")
     public String greet(@RequestParam(value="name", defaultValue="World") String name) throws UnknownHostException {
-        return this.service.getHelloMessage(name);
+        return this.service.createHelloMessage(name);
     }
     
 }

@@ -7,11 +7,24 @@ eureka.instance.preferIpAddress: true
 ---
 spring:
   profiles: docker
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: ${DB_DRIVER}
+    poolSize: ${DB_POOLSIZE}
 server.port: 8080
 eureka.client.serviceUrl.defaultZone: http://eureka:8761/eureka/
 ---
 spring:
   profiles: local
+  #DB
+  datasource:
+    url: jdbc:h2:mem:data_ref
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+    poolSize: 30
 server.port: 0
 eureka.client.serviceUrl.defaultZone: http://localhost:8761/eureka/
         

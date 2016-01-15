@@ -42,6 +42,24 @@ simplesubservice:
     build: ../simple-sub-service/target
     environment:
         - SPRING_PROFILES_ACTIVE=docker
+        - DB_URL=jdbc:mysql://mysql/mysql
+        - DB_USER=root
+        - DB_PASSWORD=4711
+        - DB_DRIVER=com.mysql.jdbc.Driver
+        - DB_POOLSIZE=30
     links:
         - eureka
+        - mysql
+        
+mysql:
+    hostname: mysql
+    image: mysql
+    environment:
+        - MYSQL_ROOT_PASSWORD=4711
+        - MYSQL_DATABASE=simplesubservice
+        - MYSQL_USER=acme
+        - MYSQL_PASSWORD=pw
+    volumes:
+        - ~/data/mysql:/var/lib/mysql
+    
     
