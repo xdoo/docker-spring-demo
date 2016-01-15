@@ -42,7 +42,4 @@ eureka:
   instance:
     hostname: ${DISCOVERY_HOSTNAME}
     preferIpAddress: true
-  client:
-    registerWithEureka: true
-    serviceUrl.defaultZone: http://${DISCOVERY_PEER_HOSTNAME}:${DISCOVERY_PEER_PORT}/eureka/
 
