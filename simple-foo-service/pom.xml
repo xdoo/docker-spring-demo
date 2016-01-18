@@ -6,10 +6,13 @@
         <artifactId>parent</artifactId>
         <version>1.0.2</version>
     </parent>
-    <artifactId>simple-sub-service</artifactId>
-    <name>simple-sub-service</name>
+
+    <artifactId>simple-foo-service</artifactId>
+    <name>simple-foo-service</name>
     <description>Spring Boot Simple Sample</description>
     <version>1.0.2</version>
+    <packaging>jar</packaging>
+
     <properties>
         <main.basedir>${basedir}/../..</main.basedir>
     </properties>
