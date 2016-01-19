@@ -1,0 +1,14 @@
+## YAML Template.
+spring:
+  profiles:
+    active: local
+---
+spring:
+  profiles: docker
+my.property: foo_docker
+---
+spring:
+  profiles: local
+my.property: foo_docker
+---
+my.default: default

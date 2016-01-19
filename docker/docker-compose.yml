@@ -49,14 +49,39 @@ simplesubservice:
         - DB_POOLSIZE=30
     links:
         - eureka
-        - mysql
+        - mysqlsub
         
-mysql:
-    hostname: mysql
+simplefooservice:
+    hostname: simplefooservice
+    build: ../simple-foo-service/target
+    environment:
+        - SPRING_PROFILES_ACTIVE=docker
+        - DB_URL=jdbc:mysql://mysql/simplefooservice
+        - DB_USER=acme
+        - DB_PASSWORD=pw
+        - DB_DRIVER=com.mysql.jdbc.Driver
+        - DB_POOLSIZE=30
+    links:
+        - eureka
+        - mysqlfoo
+        
+mysqlsub:
+    hostname: mysqlsub
     image: mysql
     environment:
         - MYSQL_ROOT_PASSWORD=4711
         - MYSQL_DATABASE=simplesubservice
+        - MYSQL_USER=acme
+        - MYSQL_PASSWORD=pw
+    volumes:
+        - ~/data/mysql:/var/lib/mysql
+
+mysqlfoo:
+    hostname: mysqlfoo
+    image: mysql
+    environment:
+        - MYSQL_ROOT_PASSWORD=4712
+        - MYSQL_DATABASE=simplefooservice
         - MYSQL_USER=acme
         - MYSQL_PASSWORD=pw
     volumes:
