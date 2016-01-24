@@ -42,7 +42,7 @@ simplesubservice:
     build: ../simple-sub-service/target
     environment:
         - SPRING_PROFILES_ACTIVE=docker
-        - DB_URL=jdbc:mysql://mysql/simplesubservice
+        - DB_URL=jdbc:mysql://mysqlsub/simplesubservice
         - DB_USER=acme
         - DB_PASSWORD=pw
         - DB_DRIVER=com.mysql.jdbc.Driver
@@ -56,7 +56,7 @@ simplefooservice:
     build: ../simple-foo-service/target
     environment:
         - SPRING_PROFILES_ACTIVE=docker
-        - DB_URL=jdbc:mysql://mysql/simplefooservice
+        - DB_URL=jdbc:mysql://mysqlfoo/simplefooservice
         - DB_USER=acme
         - DB_PASSWORD=pw
         - DB_DRIVER=com.mysql.jdbc.Driver
@@ -74,7 +74,7 @@ mysqlsub:
         - MYSQL_USER=acme
         - MYSQL_PASSWORD=pw
     volumes:
-        - ~/data/mysql:/var/lib/mysql
+        - ~/data/docker/sample/simplesubservice:/var/lib/mysql
 
 mysqlfoo:
     hostname: mysqlfoo
@@ -85,6 +85,6 @@ mysqlfoo:
         - MYSQL_USER=acme
         - MYSQL_PASSWORD=pw
     volumes:
-        - ~/data/mysql:/var/lib/mysql
+        - ~/data/docker/sample/simplefooservice:/var/lib/mysql
     
     
