@@ -1,0 +1,9 @@
+
+# service 1
+http://localhost:10000/simple/greet
+
+# service 2 
+http://localhost:10000/foo/foo/
+
+# log into container
+docker exec -it <mycontainer> bash

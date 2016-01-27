@@ -5,10 +5,9 @@ spring:
 #JPA
   jpa:
     hibernate:
-        ddl-auto: update
+        ddl-auto: drop-create
         naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
-        show-sql: false
-eureka.instance.preferIpAddress: true
+        show-sql: true
    
 ---
 spring:
@@ -21,9 +20,11 @@ spring:
     poolSize: ${DB_POOLSIZE}
   jpa:
     database-platform: org.hibernate.dialect.MySQL5Dialect
-    show-sql: false
+    show-sql: true
 server.port: 8080
-eureka.client.serviceUrl.defaultZone: http://eureka:8761/eureka/
+eureka:
+    client.serviceUrl.defaultZone: http://discovery:8761/eureka/
+    instance.instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 ---
 spring:
   profiles: local
@@ -34,8 +35,13 @@ spring:
     password:
     driverClassName: org.h2.Driver
     poolSize: 30
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
 server.port: 0
-eureka.client.serviceUrl.defaultZone: http://localhost:8761/eureka/
+eureka:
+    client.serviceUrl.defaultZone: http://localhost:8761/eureka/
+    instance.preferIpAddress: true
         
         
    

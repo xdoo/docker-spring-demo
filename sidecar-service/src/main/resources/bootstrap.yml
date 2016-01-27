@@ -1,15 +1,23 @@
 ## YAML Template.
 spring:
   profiles:
-    active: docker
-
+    active: local
+  application:
+    name: gateway
+eureka:
+  instance:
+    preferIpAddress: true
+   
 ---
 spring:
   profiles: docker
-  application:
-    name: gateway
-  cloud:
-    config:
-      uri: http://configserver:8888
-encrypt:
-  failOnError: false
+server.port: 8080
+eureka:
+    client:
+        serviceUrl.defaultZone: http://discovery:8761/eureka/
+  
+---
+spring:
+  profiles: local
+server.port: 0
+eureka.client.serviceUrl.defaultZone: http://localhost:8761/eureka/

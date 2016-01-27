@@ -1,45 +1,46 @@
 ## docker compose file with docker build
-
-eureka:
-    hostname: eureka
-    build: ../eureka/target
+discovery:
+    hostname: discovery
+    build: ../../eureka/target
     ports: 
         - "8761:8761"
     environment:
         - SPRING_PROFILES_ACTIVE=docker
-        - DISCOVERY_HOSTNAME=eureka
+        - DISCOVERY_HOSTNAME=discovery
         - DISCOVERY_PORT=8761
 
-config:
-    hostname: configserver
-    build: ../config-service/target
-    links:
-       - eureka
-    environment:
-        - SPRING_PROFILES_ACTIVE=docker
+#config:
+#    hostname: configserver
+#    build: ../../config-service/target
+#    links:
+#       - discovery
+#    environment:
+#        - SPRING_PROFILES_ACTIVE=docker
         
 sidecar:
     hostname: sidecar
-    build: ../sidecar-service/target
+    build: ../../sidecar-service/target
     ports:
         - "10000:10000"
     links:
-        - eureka
+        - discovery
+        - simplefooservice
         - simpleservice
     environment:
         - SPRING_PROFILES_ACTIVE=docker
-  
+
 simpleservice:
     hostname: simpleservice
-    build: ../simple-service/target
+    build: ../../simple-service/target
     environment:
         - SPRING_PROFILES_ACTIVE=docker
-    links: 
-        - eureka
+    links:
+        - discovery
+        - simplesubservice
                        
 simplesubservice:
     hostname: simplesubservice
-    build: ../simple-sub-service/target
+    build: ../../simple-sub-service/target
     environment:
         - SPRING_PROFILES_ACTIVE=docker
         - DB_URL=jdbc:mysql://mysqlsub/simplesubservice
@@ -48,12 +49,12 @@ simplesubservice:
         - DB_DRIVER=com.mysql.jdbc.Driver
         - DB_POOLSIZE=30
     links:
-        - eureka
+        - discovery
         - mysqlsub
         
 simplefooservice:
     hostname: simplefooservice
-    build: ../simple-foo-service/target
+    build: ../../simple-foo-service/target
     environment:
         - SPRING_PROFILES_ACTIVE=docker
         - DB_URL=jdbc:mysql://mysqlfoo/simplefooservice
@@ -62,7 +63,7 @@ simplefooservice:
         - DB_DRIVER=com.mysql.jdbc.Driver
         - DB_POOLSIZE=30
     links:
-        - eureka
+        - discovery
         - mysqlfoo
         
 mysqlsub:

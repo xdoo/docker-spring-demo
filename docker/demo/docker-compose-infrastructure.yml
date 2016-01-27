@@ -1,0 +1,28 @@
+discovery:
+    hostname: discovery
+    build: ../../eureka/target
+    ports: 
+        - "8761:8761"
+    environment:
+        - SPRING_PROFILES_ACTIVE=docker
+        - DISCOVERY_HOSTNAME=discovery
+        - DISCOVERY_PORT=8761
+
+config:
+    hostname: configserver
+    build: ../../config-service/target
+    links:
+       - discovery
+    environment:
+        - SPRING_PROFILES_ACTIVE=docker
+        
+sidecar:
+    hostname: sidecar
+    build: ../../sidecar-service/target
+    ports:
+        - "10000:10000"
+    links:
+        - discovery
+    environment:
+        - SPRING_PROFILES_ACTIVE=docker
+  
