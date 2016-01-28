@@ -6,7 +6,7 @@ spring:
     name: gateway
 eureka:
   instance:
-    preferIpAddress: true
+    prefer-ip-address: true
    
 ---
 spring:

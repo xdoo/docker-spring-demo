@@ -9,13 +9,13 @@ discovery:
         - DISCOVERY_HOSTNAME=discovery
         - DISCOVERY_PORT=8761
 
-#config:
-#    hostname: configserver
-#    build: ../../config-service/target
-#    links:
-#       - discovery
-#    environment:
-#        - SPRING_PROFILES_ACTIVE=docker
+config:
+    hostname: configserver
+    build: ../../config-service/target
+    links:
+       - discovery
+    environment:
+        - SPRING_PROFILES_ACTIVE=docker
         
 sidecar:
     hostname: sidecar
