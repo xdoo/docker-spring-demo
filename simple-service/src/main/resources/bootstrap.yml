@@ -11,7 +11,12 @@ eureka:
 spring:
   profiles: docker
 server.port: 8080
-eureka.client.serviceUrl.defaultZone: http://eureka:8761/eureka/
+eureka:
+    client:
+        serviceUrl.defaultZone: http://discovery:8761/eureka/
+    instance:
+        instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+        prefer-ip-address: true
 ---
 spring:
   profiles: local

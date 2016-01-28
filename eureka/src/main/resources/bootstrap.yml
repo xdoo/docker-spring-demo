@@ -3,9 +3,14 @@ spring:
   profiles:
     active: local
   application:
-    name: eureka
-server:
-  port: 8761
+    name: discovery
+eureka:
+  instance:
+    hostname: discovery
+    preferIpAddress: true
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
   
 ---
 spring:
@@ -14,6 +19,8 @@ spring:
     config:
       discovery:
         enabled: true
+server:
+  port: 8761
 endpoints:
   restart:
     enabled: true
@@ -22,11 +29,7 @@ endpoints:
   health:
     sensitive: false
 eureka:
-  instance:
-    hostname: discovery
   client:
-    registerWithEureka: false
-    fetchRegistry: false
     serviceUrl:
       defaultZone: http://127.0.0.1:8761/eureka/
 ---
@@ -39,7 +42,7 @@ endpoints:
   shutdown.enabled: true
   health.sensitive: true
 eureka:
-  instance:
-    hostname: ${DISCOVERY_HOSTNAME}
-    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka/
 

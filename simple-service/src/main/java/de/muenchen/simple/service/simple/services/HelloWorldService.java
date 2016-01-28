@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import de.muenchen.simple.service.simple.web.clients.HelloWorldClient;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -20,6 +22,8 @@ public class HelloWorldService {
    
     private final HelloWorldClient client;
     private final String ip;
+    
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     public HelloWorldService(HelloWorldClient client) throws UnknownHostException {
@@ -28,6 +32,7 @@ public class HelloWorldService {
     }
     
     public String greet() {
+        this.log.info("asking for hello world message...");
         return this.client.getGreet() + " over " + ip;
     }
     

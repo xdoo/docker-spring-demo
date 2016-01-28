@@ -1,0 +1,91 @@
+## docker compose file with docker build
+discovery:
+    hostname: discovery
+    build: ../../eureka/target
+    ports: 
+        - "8761:8761"
+    environment:
+        - SPRING_PROFILES_ACTIVE=docker
+        - DISCOVERY_HOSTNAME=discovery
+        - DISCOVERY_PORT=8761
+
+#config:
+#    hostname: configserver
+#    build: ../../config-service/target
+#    links:
+#       - discovery
+#    environment:
+#        - SPRING_PROFILES_ACTIVE=docker
+        
+sidecar:
+    hostname: sidecar
+    build: ../../sidecar-service/target
+    ports:
+        - "10000:10000"
+    links:
+        - discovery
+        - simplefooservice
+        - simpleservice
+    environment:
+        - SPRING_PROFILES_ACTIVE=docker
+
+simpleservice:
+    hostname: simpleservice
+    build: ../../simple-service/target
+    environment:
+        - SPRING_PROFILES_ACTIVE=docker
+    links:
+        - discovery
+        - simplesubservice
+                       
+simplesubservice:
+    hostname: simplesubservice
+    build: ../../simple-sub-service/target
+    environment:
+        - SPRING_PROFILES_ACTIVE=docker
+        - DB_URL=jdbc:mysql://mysqlsub/simplesubservice
+        - DB_USER=acme
+        - DB_PASSWORD=pw
+        - DB_DRIVER=com.mysql.jdbc.Driver
+        - DB_POOLSIZE=30
+    links:
+        - discovery
+        - mysqlsub
+        
+simplefooservice:
+    hostname: simplefooservice
+    build: ../../simple-foo-service/target
+    environment:
+        - SPRING_PROFILES_ACTIVE=docker
+        - DB_URL=jdbc:mysql://mysqlfoo/simplefooservice
+        - DB_USER=acme
+        - DB_PASSWORD=pw
+        - DB_DRIVER=com.mysql.jdbc.Driver
+        - DB_POOLSIZE=30
+    links:
+        - discovery
+        - mysqlfoo
+        
+mysqlsub:
+    hostname: mysqlsub
+    image: mysql
+    environment:
+        - MYSQL_ROOT_PASSWORD=4711
+        - MYSQL_DATABASE=simplesubservice
+        - MYSQL_USER=acme
+        - MYSQL_PASSWORD=pw
+    volumes:
+        - ~/data/docker/sample/simplesubservice:/var/lib/mysql
+
+mysqlfoo:
+    hostname: mysqlfoo
+    image: mysql
+    environment:
+        - MYSQL_ROOT_PASSWORD=4712
+        - MYSQL_DATABASE=simplefooservice
+        - MYSQL_USER=acme
+        - MYSQL_PASSWORD=pw
+    volumes:
+        - ~/data/docker/sample/simplefooservice:/var/lib/mysql
+    
+    

@@ -4,13 +4,6 @@ spring:
     active: local
 ---
 spring:
-  profiles: local
-  cloud:
-    config:
-      discovery:
-        enabled: true
----
-spring:
   profiles: docker
 ---
 spring:
