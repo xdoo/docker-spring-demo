@@ -19,6 +19,16 @@ spring:
     password: ${DB_PASSWORD}
     driver-class-name: ${DB_DRIVER}
     poolSize: ${DB_POOLSIZE}
+        
+---
+spring:
+  profiles: docker
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: ${DB_DRIVER}
+    poolSize: ${DB_POOLSIZE}
 server.port: 8080
 eureka.client.serviceUrl.defaultZone: http://eureka:8761/eureka/
 ---
@@ -33,7 +43,3 @@ spring:
     poolSize: 30
 server.port: 0
 eureka.client.serviceUrl.defaultZone: http://localhost:8761/eureka/
-        
-        
-   
-  

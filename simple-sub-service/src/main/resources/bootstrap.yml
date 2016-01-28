@@ -31,7 +31,7 @@ spring:
     password:
     driverClassName: org.h2.Driver
     poolSize: 30
-server.port: 8080
+server.port: 0
 eureka.client.serviceUrl.defaultZone: http://localhost:8761/eureka/
         
         

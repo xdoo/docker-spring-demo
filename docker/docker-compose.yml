@@ -74,7 +74,7 @@ mysqlsub:
         - MYSQL_USER=acme
         - MYSQL_PASSWORD=pw
     volumes:
-        - ~/data/mysql:/var/lib/mysql
+        - ~/data/demo/simplesubservice:/var/lib/mysql
 
 mysqlfoo:
     hostname: mysqlfoo
@@ -85,6 +85,6 @@ mysqlfoo:
         - MYSQL_USER=acme
         - MYSQL_PASSWORD=pw
     volumes:
-        - ~/data/mysql:/var/lib/mysql
+        - ~/data/demo/simplefooservice:/var/lib/mysql
     
     
