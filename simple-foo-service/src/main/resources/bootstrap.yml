@@ -7,19 +7,12 @@ spring:
     hibernate:
         ddl-auto: update
         naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
-        show-sql: false
-eureka.instance.preferIpAddress: true
-   
----
-spring:
-  profiles: docker
-  datasource:
-    url: ${DB_URL}
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
-    driver-class-name: ${DB_DRIVER}
-    poolSize: ${DB_POOLSIZE}
-        
+        show-sql: true
+eureka:
+    client.serviceUrl.defaultZone: http://localhost:8761/eureka/
+    instance:
+        instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+        prefer-ip-address: true        
 ---
 spring:
   profiles: docker
@@ -42,4 +35,3 @@ spring:
     driverClassName: org.h2.Driver
     poolSize: 30
 server.port: 0
-eureka.client.serviceUrl.defaultZone: http://localhost:8761/eureka/

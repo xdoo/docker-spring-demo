@@ -1,8 +1,13 @@
 ## YAML Template.
 spring:
   profiles:
-    active: docker
-
+    active: local
+  application:
+    name: gateway
+eureka:
+  instance:
+    prefer-ip-address: true
+   
 ---
 spring:
   profiles: docker
