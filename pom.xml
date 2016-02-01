@@ -13,6 +13,7 @@
         <module>config-service</module>
         <module>sidecar-service</module>
         <module>simple-foo-service</module>
+    <module>gui</module>
   </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
