@@ -27,23 +27,24 @@ public class FooUI extends UI {
     
     @Override
     protected void init(VaadinRequest request) {
+        this.label = new Label(Integer.toString(this.foo.getX()));
         HorizontalLayout layout = new HorizontalLayout();
         
         layout.addComponent(this.label);
         layout.addComponent(this.createPlus());
+        
+        // some design
         layout.setSpacing(true);
+        layout.setMargin(true);
+        
         setContent(layout);
     }
     
     private Button createPlus() {
         return new Button("plus", (Button.ClickEvent event) -> {
             service.plusOne(foo);
-            label.setCaption(Integer.toString(foo.getX()));
+            label.setValue(Integer.toString(foo.getX()));
         });
-    }
-    
-    private void createLabel() {
-        this.label = new Label(Integer.toString(this.foo.getX()));
     }
     
 }
