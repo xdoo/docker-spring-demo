@@ -8,12 +8,16 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author claus
  */
-@SpringUI
+//@SpringUI
+@Component
+@Scope("prototype")
 @Theme("valo")
 public class FooUI extends UI {
 
